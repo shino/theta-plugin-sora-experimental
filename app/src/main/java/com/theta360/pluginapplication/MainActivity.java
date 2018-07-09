@@ -176,7 +176,7 @@ public class MainActivity extends PluginActivity {
          * XXX
          * 本来ならConfigServerで設定されたデータを取得する
          */
-        return "wss:/example.org/signaling";
+        return BuildConfig.SIGNALING_ENDPOINT;
     }
 
     private String getChannelId() {
@@ -184,7 +184,7 @@ public class MainActivity extends PluginActivity {
          * XXX
          * 本来ならConfigServerで設定されたデータを取得する
          */
-        return "my_channel";
+        return BuildConfig.CHANNEL_ID;
     }
 
     private String getMetadata() {
