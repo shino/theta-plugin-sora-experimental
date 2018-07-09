@@ -140,11 +140,12 @@ public class MainActivity extends PluginActivity {
             String metadata  = getMetadata();
 
             SoraMediaOption option = new SoraMediaOption();
+            option.setVideoBitrate(5000);
 
             // XXX Audioがまだうまくいってない。雑音になってしまう。
             //option.enableAudioUpstream();
             option.enableVideoUpstream(capturer, egl.getEglBaseContext(), false);
-            option.setVideoCodec(SoraVideoOption.Codec.VP9);
+            option.setVideoCodec(SoraVideoOption.Codec.H264);
 
             sora = new SoraMediaChannel(
                     this,
@@ -210,7 +211,7 @@ public class MainActivity extends PluginActivity {
 
         SoraLogger.Companion.setEnabled(true);
 
-        capturer = new ThetaCameraCapturer(ThetaCameraCapturer.ShootingMode.Live640);
+        capturer = new ThetaCameraCapturer(ThetaCameraCapturer.ShootingMode.Live3840);
         egl      = EglBase.create();
 
         // Set a callback when a button operation event is acquired.
