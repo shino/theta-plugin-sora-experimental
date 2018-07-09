@@ -141,7 +141,6 @@ public class MainActivity extends PluginActivity {
 
             SoraMediaOption option = new SoraMediaOption();
 
-            option.enableMultistream();
             // XXX Audioがまだうまくいってない。雑音になってしまう。
             //option.enableAudioUpstream();
             option.enableVideoUpstream(capturer, egl.getEglBaseContext(), false);
@@ -219,7 +218,7 @@ public class MainActivity extends PluginActivity {
             @Override
             public void onKeyDown(int keyCode, KeyEvent event) {
                 if (keyCode == KeyReceiver.KEYCODE_CAMERA) {
-                    Log.d("MyPlugin", "CAMERA BUTTON PRESSED UP");
+                    Log.d("MyPlugin", "CAMERA BUTTON PRESSED DOWN");
                     soraHandler.post(() -> {
                         switchSora();
                     });
