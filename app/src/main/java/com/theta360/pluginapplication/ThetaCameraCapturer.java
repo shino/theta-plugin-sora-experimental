@@ -29,7 +29,10 @@ public class ThetaCameraCapturer implements VideoCapturer,
     private String               stitching;
 
     public enum ShootingMode {
-       Live3840, Live1920, Live1024, Live640
+        Live3840, Live1920, Live1024, Live640,
+
+        // こっちは絵が出なかった
+        Recording3840
     }
 
     public ThetaCameraCapturer(ShootingMode shootingMode) {
@@ -53,6 +56,11 @@ public class ThetaCameraCapturer implements VideoCapturer,
                 this.width = 640;
                 this.height = 320;
                 this.shootingMode = "RicMoviePreview640";
+                break;
+            case Recording3840:
+                this.width = 3840;
+                this.height = 1920;
+                this.shootingMode = "RicMovieRecording4kEqui";
                 break;
         }
         this.camera     = Camera.open();
@@ -121,8 +129,13 @@ public class ThetaCameraCapturer implements VideoCapturer,
         Camera.Parameters params = camera.getParameters();
         params.set("RIC_SHOOTING_MODE", this.shootingMode);
         params.set("RIC_PROC_STITCHING", "RicStaticStitching");
-        params.set("RicMicSelect", "RicMicSelectExternal");
+        //params.set("RicMicSelect", "RicMicSelectExternal");
+        // params.set("RicMicSelect", "RicMicSelectInternal");
         //params.set("RIC_MIC_SELECT", "RicMicSelectExternal");
+        // params.set("RicMicSurrondVolumeLevel", "RicMicSurroundVolumeLevelNormal");
+        // params.set("RicMicSurrondVolumeLevel", "RicMicSurroundVolumeLevelLarge");
+
+
         camera.setParameters(params);
         camera.startPreview();
         return true;
