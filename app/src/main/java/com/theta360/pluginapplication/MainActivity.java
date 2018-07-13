@@ -141,6 +141,7 @@ public class MainActivity extends PluginActivity {
 
             SoraMediaOption option = new SoraMediaOption();
             option.setVideoBitrate(5000);
+            option.setEnableCpuOveruseDetection(false);
 
             // XXX Audioがまだうまくいってない。雑音になってしまう。
             // option.enableAudioUpstream();
